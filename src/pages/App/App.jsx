@@ -24,7 +24,7 @@ export default function App() {
           <Routes>
             {/* Route components in here */}
             <Route path='/books/new' element={<AddBookPage />} />
-            <Route path='/books' element={<ReadingList />} />
+            <Route path='/books' element={<ReadingList books={books} />} />
           </Routes>
         </>
         :
