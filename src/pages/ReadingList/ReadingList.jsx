@@ -1,5 +1,6 @@
 import { checkToken } from '../../utilities/users-service';
-import SingleBook from '../singleBook/singleBook';
+import { Link } from 'react-router-dom';
+
 
 export default function ReadingList( {books} ) {
   
@@ -17,6 +18,7 @@ export default function ReadingList( {books} ) {
           <th>Title</th>
           <th>Currently Reading?</th>
           <th>Current Page</th>
+          <th>Check Page Note</th>
         </tr>
         {books.map((info, key) => {
           return (
@@ -24,6 +26,7 @@ export default function ReadingList( {books} ) {
               <td>{info.name}</td>
               <td>{info.currentlyReading}</td>
               <td>{info.currentPage}</td>
+              <td><Link to='/bookDetails'>Note</Link></td>
             </tr>
           )
         })}
