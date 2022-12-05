@@ -2,21 +2,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-  id: {
-    type: String,
-    required: true
+  _id: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'Book'
   },
   name: {
     type: String,
+    required: true
+  },
+  currentlyReading: {
+    type: Boolean,
     required: true
   },
   currentPage: {
     type: Number,
     required: true
   },
-  currentlyReading: {
-    type: Boolean,
-    required: true
+  note: {
+    type: String,
+    required: false
   },
 },
 );

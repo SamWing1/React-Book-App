@@ -18,7 +18,8 @@ export default function ReadingList( {books} ) {
           <th>Title</th>
           <th>Currently Reading?</th>
           <th>Current Page</th>
-          <th>Check Page Note</th>
+          <th>Page Note</th>
+          <th>Delete</th>
         </tr>
         {books.map((info, key) => {
           return (
@@ -26,7 +27,8 @@ export default function ReadingList( {books} ) {
               <td>{info.name}</td>
               <td>{info.currentlyReading}</td>
               <td>{info.currentPage}</td>
-              <td><Link to='/bookDetails'>Note</Link></td>
+              <td><Link to='/BookDetails'>Note</Link></td>
+              <td><button type="submit">X</button></td>
             </tr>
           )
         })}
