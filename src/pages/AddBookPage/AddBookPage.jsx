@@ -1,7 +1,7 @@
 // import book from "../../../models/book";
 import { useState } from 'react';
 import addBook from '../../utilities/books-api';
-
+import './AddBookPage.css'
 
 
 export default function AddBookPage({book, setBook}) {
@@ -50,7 +50,7 @@ const handleChange = (e) => {
   return (
     <>
     <h1>Add Book</h1>
-    <form onSubmit={handleAddBook}>
+    <form onSubmit={handleAddBook} class="Add-Book-Form">
     <label>Book Title:
       <input type="string" name="name" value={form.name} onChange={handleChange}></input>
     </label>

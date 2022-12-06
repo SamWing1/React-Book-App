@@ -2,6 +2,7 @@ const Book = require('../../models/book')
 
 module.exports = {
     bookCreate,
+    index,
 };
 
 async function bookCreate(req, res) {
@@ -13,4 +14,9 @@ async function bookCreate(req, res) {
     } catch (err) {
       res.status(400).json(err);
     }
+  }
+
+  async function index(req, res) {
+    const dbBook = await Book.find({})
+    console.log(dbBook)
   }

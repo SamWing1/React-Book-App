@@ -1,5 +1,6 @@
 import { checkToken } from '../../utilities/users-service';
 import { Link } from 'react-router-dom';
+import './readingList.css';
 
 
 export default function ReadingList( {book} ) {
@@ -9,11 +10,20 @@ export default function ReadingList( {book} ) {
     console.log(expDate.toLocaleDateString())
   }
 
+  function showData() {
+    fetch('https://localhost:3001/api/books/show')
+    .then(res => res.json())
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+  }
+
   return (
     <>
       <h1>Reading List</h1>
 
-      <table>
+    <button onClick={showData}>Press me</button>
+
+      <table class="reading-list">
         <tr>
           <th>Title</th>
           <th>Currently Reading?</th>
