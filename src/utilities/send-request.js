@@ -2,7 +2,6 @@ import { getToken } from './users-service';
 
 export default async function sendRequest(url, method = 'GET', payload = null) {
   const options = { method };
-  console.log(payload)
   if (payload) {
     options.headers = { 'Content-Type': 'application/json' };
     options.body = JSON.stringify(payload);
@@ -13,10 +12,9 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     options.headers ||= {...options, Authorization: `Bearer ${token}`};
   }
   const res = await fetch(url, options);
-  console.log(url)
   // res.ok will be false if the status code is not 200-299
   // res.json() returns a promise that resolves
   // to the data that was sent back by the server
   if (res.ok) return res.json();
-  // throw new Error('Bad Request');
+  throw new Error('Bad Request');
 }
