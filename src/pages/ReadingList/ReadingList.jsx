@@ -1,29 +1,45 @@
+import { useState, useEffect } from 'react';
 import { checkToken } from '../../utilities/users-service';
 import { Link } from 'react-router-dom';
 import './readingList.css';
 
 
-export default function ReadingList( {book} ) {
+export default function ReadingList({book}) {
   
+  const [books, setBooks] = useState([])
+
   async function handleCheckToken() {
     const expDate = await checkToken();
     console.log(expDate.toLocaleDateString())
   }
 
   function showData() {
-    fetch('https://localhost:3001/api/books/show')
+    fetch('http://localhost:3000/api/books/show')
     .then(res => res.json())
-    .then(result => console.log(result))
+    .then(data => setBooks( data ))
     .catch(err => console.log(err))
   }
+
+  // window.onload = showData()
+
+  useEffect(() => {
+    showData()
+  }, []);
+
+  const deleteButton = async () => {
+    const response = await fetch('http://localhost:3000/api/books/show/')
+    .then(res => res.json())
+    .then(data => setBooks(data))
+    .catch(err => console.log(err))
+    console.log('clicked')
+    }
+  
 
   return (
     <>
       <h1>Reading List</h1>
 
-    <button onClick={showData}>Press me</button>
-
-      <table class="reading-list">
+      <table class="reading-list table table-striped">
         <tr>
           <th>Title</th>
           <th>Currently Reading?</th>
@@ -31,14 +47,15 @@ export default function ReadingList( {book} ) {
           <th>Page Note</th>
           <th>Delete</th>
         </tr>
-        {book.map((info, key) => {
+        {books.map((info, key) => {
           return (
             <tr key={key}>
               <td>{info.name}</td>
               <td>{info.currentlyReading}</td>
               <td>{info.currentPage}</td>
+              <td>{info._id}</td>
               <td><Link to='/BookDetails'>Note</Link></td>
-              <td><button type="submit">X</button></td>
+              <td><button onClick={deleteButton}>X</button></td>
             </tr>
           )
         })}

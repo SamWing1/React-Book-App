@@ -1,7 +1,12 @@
 import sendRequest from './send-request';
-const BASE_URL = '/api/books/new';
+const BASE_URL = '/api/books';
 
-export default function addBook(form) {
-    // console.log(formData)
-    return sendRequest(BASE_URL, 'POST', form);
+export function addBook(form) {
+    console.log(form)
+    return sendRequest(`${BASE_URL}/new`, 'POST', form);
+}
+
+export function deleteBook(form) {
+    console.log(form)
+    return sendRequest(`${BASE_URL}/delete`, 'POST', form);
 }
