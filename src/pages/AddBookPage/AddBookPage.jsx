@@ -1,11 +1,13 @@
 // import book from "../../../models/book";
 import { useState } from 'react';
+import addBook from '../../utilities/books-api';
 
 
 
-export default function AddBookPage({addBook}) {
+export default function AddBookPage({book, setBook}) {
 
-  
+  const [error, setError] = useState('')
+
   const [form, setForm] = useState({
     name: '',
     reading: '',
@@ -13,36 +15,32 @@ export default function AddBookPage({addBook}) {
     pageNote: '',
   })
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   .then(response =>  response.json)
-  //   .then((json) => {setBooks({
-  //     name: json.name,
-  //     reading: json.reading,
-  //     currentPage: json.currentPage,
-  //     pageNote: json.pageNote,
-  //   })})
-  //   setForm(
-  //     {
-  //       name: '',
-  //       reading: '',
-  //       currentPage: 0,
-  //       pageNote: '',
-  //     }
-  //   )
-  //   console.log("is this thing on")
-  // }
+// const handleAddBook = async(event) => {
+//   event.preventDefault()
+//   addBook(form)
+//   setForm({
+//     name: '',
+//     reading: '',
+//     currentPage: 0,
+//     pageNote: '',
+//   })
+// }
 
-const handleAddBook = (event) => {
-  event.preventDefault()
-  addBook(form)
+async function handleAddBook (evt) {
+  evt.preventDefault();
+  try {
+    console.log(form)
+    await addBook(form)
   setForm({
     name: '',
     reading: '',
     currentPage: 0,
     pageNote: '',
   })
-}
+  } catch {
+    setError( 'Sign Up Failed - Try Again' );
+  }
+};
 
 const handleChange = (e) => {
   setForm({...form, [e.target.name]:e.target.value})

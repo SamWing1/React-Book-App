@@ -2,7 +2,7 @@ import { checkToken } from '../../utilities/users-service';
 import { Link } from 'react-router-dom';
 
 
-export default function ReadingList( {books} ) {
+export default function ReadingList( {book} ) {
   
   async function handleCheckToken() {
     const expDate = await checkToken();
@@ -21,7 +21,7 @@ export default function ReadingList( {books} ) {
           <th>Page Note</th>
           <th>Delete</th>
         </tr>
-        {books.map((info, key) => {
+        {book.map((info, key) => {
           return (
             <tr key={key}>
               <td>{info.name}</td>

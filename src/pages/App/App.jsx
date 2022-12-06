@@ -17,9 +17,9 @@ export default function App() {
     { name: "Abhorsen", currentPage: 1, currentlyReading: "No" },
   ])
 
-  const addBook = (newBook) => {
-    setBooks([...books, newBook])
-  }
+  // const addBook = (newBook) => {
+  //   setBooks([...books, newBook])
+  // }
 
   return (
     <main className="App">
@@ -28,8 +28,8 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components in here */}
-            <Route path='/books/new' element={<AddBookPage addBook={addBook} />} />
-            <Route path='/books' element={<ReadingList books={books} />} />
+            <Route path='/books/new' element={<AddBookPage book={books} setBook={setBooks} />} />
+            <Route path='/books' element={<ReadingList book={books} setBook={setBooks} />} />
             <Route path='/BookDetails' element={<BookDetails books={books} />} />
           </Routes>
         </>
