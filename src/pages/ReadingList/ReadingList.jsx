@@ -6,7 +6,7 @@ import SingleBook from '../SingleBook/SingleBook';
 import './readingList.css';
 
 
-export default function ReadingList({book}) {
+export default function ReadingList() {
   
   const [books, setBooks] = useState([])
 
@@ -22,15 +22,13 @@ export default function ReadingList({book}) {
     .catch(err => console.log(err))
   }
 
-  console.log(books.filter(item => {
-    return item._id
-  }))
+  console.log()
 
   
-    // useEffect(() => {
-    //   showData()
-    //   console.log("help")
-    // }, [books]);
+    useEffect(() => {
+      showData()
+      console.log("help")
+    }, []);
 
   return (
     <>
@@ -45,7 +43,7 @@ export default function ReadingList({book}) {
           <th>Delete</th>
         </tr>
           
-        {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} />)}
+        {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} showData={showData} />)}
           
   </table>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
