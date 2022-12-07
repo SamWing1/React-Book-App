@@ -3,7 +3,8 @@ const Book = require('../../models/book')
 module.exports = {
     bookCreate,
     index,
-    bookDelete
+    bookDelete,
+    bookEdit,
 };
 
 async function bookCreate(req, res) {
@@ -34,4 +35,15 @@ async function bookCreate(req, res) {
     const dbBook = await Book.find()
     console.log(dbBook)
     res.json(dbBook)
+  }
+
+  async function bookEdit(req, res) {
+    try {
+      console.log(req.params.id, "edit?")
+      const book = await Book.findById(req.params.id);
+      res.json(book)
+    } catch (err) {
+      console.log(err)
+      res.status(400).json(err);
+    }
   }

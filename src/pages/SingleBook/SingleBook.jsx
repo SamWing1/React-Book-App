@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import * as booksApi from '../../utilities/books-api';
+import './SingleBook.css'
 
-export default function SingleBook({ name, currentlyReading, currentPage, _id, showData }) {
+export default function SingleBook({ name, currentlyReading, currentPage, _id, note, showData }) {
     
+    const editButton = async () => {
+        console.log('clicked')
+    }
 
     const deleteButton = async () => {
         fetch(`http://localhost:3000/api/books/${_id}`, {method:"DELETE"})
@@ -15,19 +17,16 @@ export default function SingleBook({ name, currentlyReading, currentPage, _id, s
         }
 
         console.log(_id)
+        console.log(note)
         
-        // useEffect(() => {
-        //     showData()
-        //     console.log("help")
-        //   }, []);
-
     return (
         <tr>
         <td>{name}</td>
         <td>{currentlyReading}</td>
         <td>{currentPage}</td>
-        <td><Link to='/BookDetails'>Note</Link></td>
-        <td><button onClick={deleteButton}>X</button></td>
+        <td>{note}</td>
+        <td><Link to={`/edit/${_id}`} id={_id} ><button>Edit</button></Link></td>
+        <td><button className="deleteButton" onClick={deleteButton}>X</button></td>
       </tr>
     )
 }

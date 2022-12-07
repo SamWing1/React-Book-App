@@ -11,7 +11,7 @@ export default function AddBookPage({ book, setBook }) {
     name: '',
     currentlyReading: 'Yes',
     currentPage: 'NaN',
-    pageNote: '',
+    note: '',
   })
 
   async function handleAddBook(evt) {
@@ -23,7 +23,7 @@ export default function AddBookPage({ book, setBook }) {
         name: '',
         currentlyReading: 'Yes',
         currentPage: 'NaN',
-        pageNote: '',
+        note: '',
       })
     } catch {
       setError('Sign Up Failed - Try Again');
@@ -51,7 +51,7 @@ export default function AddBookPage({ book, setBook }) {
           <input type="number" name="currentPage" value={form.currentPage} onChange={handleChange} placeholder="1"></input>
         </label>
         <label>Page Note?
-          <input type="string" name="pageNote" value={form.pageNote} onChange={handleChange} placeholder="thoughts?"></input>
+          <input type="string" name="note" value={form.note} onChange={handleChange} placeholder="thoughts?"></input>
         </label>
         <input type="submit" value="Add Book"></input>
       </form>

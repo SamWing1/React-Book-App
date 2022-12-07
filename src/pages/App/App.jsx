@@ -1,21 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import AddBookPage from '../AddBookPage/AddBookPage';
 import ReadingList from '../ReadingList/ReadingList';
-import BookDetails from '../BookDetails/BookDetails'
+import BookDetails from '../BookDetails/BookDetails';
+import EditForm from '../EditForm/EditForm';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
-  const [books, setBooks] = useState([
-    { name: "Moby Dick", currentPage: 3, currentlyReading: "Yes", note: "hardly remember, probably worth just starting again" },
-    { name: "Black Sci-Fi Short Stories", currentPage: 110, currentlyReading: "Yes" },
-    { name: "Abhorsen", currentPage: 1, currentlyReading: "No" },
-  ])
+  const [books, setBooks] = useState([]);
+
+  function showData() {
+    fetch('http://localhost:3000/api/books/show')
+    .then(res => res.json())
+    .then(data => setBooks( data ))
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    showData()
+  }, []);
 
   // const addBook = (newBook) => {
   //   setBooks([...books, newBook])
@@ -29,6 +37,7 @@ export default function App() {
           <Routes>
             {/* Route components in here */}
             <Route path='/books/new' element={<AddBookPage book={books} setBook={setBooks} />} />
+            <Route path='/edit/:id' element={<EditForm book={books} setBook={setBooks} />} />
             <Route path='/books' element={<ReadingList book={books} setBook={setBooks} />} />
             <Route path='/BookDetails' element={<BookDetails books={books} />} />
           </Routes>

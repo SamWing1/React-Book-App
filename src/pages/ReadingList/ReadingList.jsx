@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { checkToken } from '../../utilities/users-service';
-import { Link } from 'react-router-dom';
-import * as booksApi from '../../utilities/books-api';
 import SingleBook from '../SingleBook/SingleBook';
 import './readingList.css';
 
@@ -22,7 +20,7 @@ export default function ReadingList() {
     .catch(err => console.log(err))
   }
 
-  console.log()
+  console.log(books)
 
   
     useEffect(() => {
@@ -40,10 +38,11 @@ export default function ReadingList() {
           <th>Currently Reading?</th>
           <th>Current Page</th>
           <th>Page Note</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
           
-        {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} showData={showData} />)}
+        {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} note={info.note} showData={showData} />)}
           
   </table>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
