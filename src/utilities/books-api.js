@@ -8,5 +8,5 @@ export function addBook(form) {
 
 export function deleteBook(form) {
     console.log(form)
-    return sendRequest(`${BASE_URL}/delete`, 'POST', form);
+    return sendRequest(`${BASE_URL}/:id`, 'DELETE', form);
 }

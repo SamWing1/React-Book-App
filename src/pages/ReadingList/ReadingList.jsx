@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { checkToken } from '../../utilities/users-service';
 import { Link } from 'react-router-dom';
+import * as booksApi from '../../utilities/books-api';
+import SingleBook from '../SingleBook/SingleBook';
 import './readingList.css';
 
 
@@ -20,26 +22,21 @@ export default function ReadingList({book}) {
     .catch(err => console.log(err))
   }
 
-  // window.onload = showData()
+  console.log(books.filter(item => {
+    return item._id
+  }))
 
-  useEffect(() => {
-    showData()
-  }, []);
-
-  const deleteButton = async () => {
-    const response = await fetch('http://localhost:3000/api/books/show/')
-    .then(res => res.json())
-    .then(data => setBooks(data))
-    .catch(err => console.log(err))
-    console.log('clicked')
-    }
   
+    // useEffect(() => {
+    //   showData()
+    //   console.log("help")
+    // }, [books]);
 
   return (
     <>
       <h1>Reading List</h1>
 
-      <table class="reading-list table table-striped">
+      <table className="reading-list table table-striped">
         <tr>
           <th>Title</th>
           <th>Currently Reading?</th>
@@ -47,18 +44,9 @@ export default function ReadingList({book}) {
           <th>Page Note</th>
           <th>Delete</th>
         </tr>
-        {books.map((info, key) => {
-          return (
-            <tr key={key}>
-              <td>{info.name}</td>
-              <td>{info.currentlyReading}</td>
-              <td>{info.currentPage}</td>
-              <td>{info._id}</td>
-              <td><Link to='/BookDetails'>Note</Link></td>
-              <td><button onClick={deleteButton}>X</button></td>
-            </tr>
-          )
-        })}
+          
+        {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} />)}
+          
   </table>
       <button onClick={handleCheckToken}>Check When My Login Expires</button>
     </>

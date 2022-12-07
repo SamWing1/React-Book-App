@@ -20,8 +20,9 @@ async function bookCreate(req, res) {
 
   async function bookDelete(req, res) {
     try {
-        console.log(req.body, "delete?")
-        const book = await Book.deleteOne(req.params._id);
+        console.log(req.params.id, "delete?")
+        const book = await Book.findByIdAndDelete(req.params.id);
+        console.log(book._id)
         res.json(book)
     } catch (err) {
       console.log(err)

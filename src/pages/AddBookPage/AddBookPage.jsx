@@ -9,7 +9,7 @@ export default function AddBookPage({ book, setBook }) {
 
   const [form, setForm] = useState({
     name: '',
-    currentlyReading: '',
+    currentlyReading: 'Yes',
     currentPage: 'NaN',
     pageNote: '',
   })
@@ -18,12 +18,11 @@ export default function AddBookPage({ book, setBook }) {
     evt.preventDefault();
     try {
       console.log(form)
-      // form.currentlyReading = (form.currentlyReading == 'Yes') ? true : false;
       await booksApi.addBook(form)
       setForm({
         name: '',
-        currentlyReading: '',
-        currentPage: 0,
+        currentlyReading: 'Yes',
+        currentPage: 'NaN',
         pageNote: '',
       })
     } catch {
@@ -38,7 +37,7 @@ export default function AddBookPage({ book, setBook }) {
   return (
     <>
       <h1>Add Book</h1>
-      <form onSubmit={handleAddBook} class="Add-Book-Form">
+      <form onSubmit={handleAddBook} className="Add-Book-Form">
         <label>Book Title:
           <input type="string" name="name" value={form.name} onChange={handleChange}></input>
         </label>

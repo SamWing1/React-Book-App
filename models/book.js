@@ -8,7 +8,8 @@ const bookSchema = new Schema({
   },
   currentlyReading: {
     type: String,
-    required: true
+    required: true,
+    default: 'Yes'
   },
   currentPage: {
     type: Number,
