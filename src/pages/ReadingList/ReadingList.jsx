@@ -45,7 +45,6 @@ export default function ReadingList() {
         {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} note={info.note} showData={showData} />)}
           
   </table>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
     </>
   );
 }

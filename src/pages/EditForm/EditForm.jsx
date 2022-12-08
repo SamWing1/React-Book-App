@@ -9,7 +9,7 @@ export default function AddBookPage() {
 
   const bookId = useParams().id
 
-  console.log(bookId)
+//   console.log(bookId)
 
   const [error, setError] = useState('')
 
@@ -66,7 +66,7 @@ const addInfo = async () => {
         <label>Page Note?
           <input type="string" name="note" value={form.note} onChange={handleChange} placeholder="thoughts?"></input>
         </label>
-        <input type="submit" value="Edit Book"></input>
+        <input className="submitButton" type="submit" value="Edit Book"></input>
       </form>
     </>
   );

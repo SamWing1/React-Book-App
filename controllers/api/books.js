@@ -59,7 +59,6 @@ async function bookCreate(req, res) {
       book.save()
     })
     .catch (function(err){
-      // console.log(err)
       res.status(400).json(err)
     })
   }
