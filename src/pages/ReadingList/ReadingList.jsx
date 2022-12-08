@@ -19,13 +19,9 @@ export default function ReadingList() {
     .then(data => setBooks( data ))
     .catch(err => console.log(err))
   }
-
-  console.log(books)
-
   
     useEffect(() => {
       showData()
-      console.log("help")
     }, []);
 
   return (

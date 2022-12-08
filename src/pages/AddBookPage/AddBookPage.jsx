@@ -20,7 +20,6 @@ export default function AddBookPage({ book, setBook }) {
   async function handleAddBook(evt) {
     evt.preventDefault();
     try {
-      console.log(form)
       navigate('/books')
       await booksApi.addBook(form)
       setForm({

@@ -9,8 +9,6 @@ export default function AddBookPage() {
 
   const bookId = useParams().id
 
-//   console.log(bookId)
-
   const [error, setError] = useState('')
 
   const [form, setForm] = useState({})
@@ -22,13 +20,11 @@ const addInfo = async () => {
     .then(res => res.json())
     .then(data => setForm( data ))
     .catch(err => console.log(err))
-    console.log('clicked')
     }
 
     async function handleSubmit(evt) {
         evt.preventDefault();
         try {
-          console.log(form);
           navigate('/books');
           await booksApi.editBook(form, bookId);
         } catch {
@@ -38,7 +34,6 @@ const addInfo = async () => {
 
   useEffect(() => {
     addInfo()
-    console.log("help?")
   }, []);
 
   const handleChange = (e) => {

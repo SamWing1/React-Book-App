@@ -4,7 +4,6 @@ import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import AddBookPage from '../AddBookPage/AddBookPage';
 import ReadingList from '../ReadingList/ReadingList';
-import BookDetails from '../BookDetails/BookDetails';
 import EditForm from '../EditForm/EditForm';
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
@@ -25,10 +24,6 @@ export default function App() {
     showData()
   }, []);
 
-  // const addBook = (newBook) => {
-  //   setBooks([...books, newBook])
-  // }
-
   return (
     <main className="App">
       { user ?
@@ -39,7 +34,6 @@ export default function App() {
             <Route path='/books/new' element={<AddBookPage book={books} setBook={setBooks} />} />
             <Route path='/edit/:id' element={<EditForm book={books} setBook={setBooks} />} />
             <Route path='/books' element={<ReadingList book={books} setBook={setBooks} />} />
-            <Route path='/BookDetails' element={<BookDetails books={books} />} />
           </Routes>
         </>
         :

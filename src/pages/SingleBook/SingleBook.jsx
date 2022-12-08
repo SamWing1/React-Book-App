@@ -3,22 +3,14 @@ import './SingleBook.css'
 
 export default function SingleBook({ name, currentlyReading, currentPage, _id, note, showData }) {
     
-    const editButton = async () => {
-        console.log('clicked')
-    }
-
     const deleteButton = async () => {
         fetch(`http://localhost:3000/api/books/${_id}`, {method:"DELETE"})
         .then(res => res.json())
         .then(showData())
         .then(showData())
         .catch(err => console.log(err))
-        console.log('clicked')
         }
 
-        console.log(_id)
-        console.log(note)
-        
     return (
         <tr>
         <td>{name}</td>
