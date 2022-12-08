@@ -1,5 +1,4 @@
 import sendRequest from './send-request';
-import { sendRequestAlt } from './send-request';
 const BASE_URL = '/api/books';
 
 export function addBook(form) {
@@ -8,5 +7,5 @@ export function addBook(form) {
 }
 
 export function editBook(form, bookId) {
-    return sendRequestAlt(`${BASE_URL}/update/${bookId}`, 'PUT', form)
+    return sendRequest(`${BASE_URL}/update/${bookId}`, 'PUT', form)
 }

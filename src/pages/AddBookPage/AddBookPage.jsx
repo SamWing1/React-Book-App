@@ -13,7 +13,7 @@ export default function AddBookPage({ book, setBook }) {
   const [form, setForm] = useState({
     name: '',
     currentlyReading: 'Yes',
-    currentPage: 'NaN',
+    currentPage: '1',
     note: '',
   })
 
@@ -26,7 +26,7 @@ export default function AddBookPage({ book, setBook }) {
       setForm({
         name: '',
         currentlyReading: 'Yes',
-        currentPage: 'NaN',
+        currentPage: '1',
         note: '',
       })
     } catch {

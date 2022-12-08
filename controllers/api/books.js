@@ -57,6 +57,8 @@ async function bookCreate(req, res) {
       book.currentPage=req.body.currentPage
       book.note=req.body.note
       book.save()
+    }) .then (function(book){
+      res.json(book)
     })
     .catch (function(err){
       res.status(400).json(err)
