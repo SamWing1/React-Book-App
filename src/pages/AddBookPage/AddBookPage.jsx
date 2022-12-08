@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as booksApi from '../../utilities/books-api';
 import './AddBookPage.css'
 
 <div></div>
 export default function AddBookPage({ book, setBook }) {
+
+  const navigate = useNavigate()
 
   const [error, setError] = useState('')
 
@@ -18,6 +21,7 @@ export default function AddBookPage({ book, setBook }) {
     evt.preventDefault();
     try {
       console.log(form)
+      navigate('/books')
       await booksApi.addBook(form)
       setForm({
         name: '',
@@ -26,7 +30,7 @@ export default function AddBookPage({ book, setBook }) {
         note: '',
       })
     } catch {
-      setError('Sign Up Failed - Try Again');
+      setError('whoops');
     }
   };
 

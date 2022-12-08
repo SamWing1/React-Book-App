@@ -25,7 +25,7 @@ export default function SingleBook({ name, currentlyReading, currentPage, _id, n
         <td>{currentlyReading}</td>
         <td>{currentPage}</td>
         <td>{note}</td>
-        <td><Link to={`/edit/${_id}`} id={_id} ><button>Edit</button></Link></td>
+        <td><Link to={`/edit/${_id}`} id={_id}><button>Edit</button></Link></td>
         <td><button className="deleteButton" onClick={deleteButton}>X</button></td>
       </tr>
     )

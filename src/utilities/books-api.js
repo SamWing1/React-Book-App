@@ -6,8 +6,7 @@ export function addBook(form) {
     return sendRequest(`${BASE_URL}/new`, 'POST', form);
 }
 
-// export function deleteBook(form) {
-//     console.log(form)
-//     return sendRequest(`${BASE_URL}/:id`, 'DELETE', form);
-// }
-
+export function editBook(form, bookId) {
+    // console.log(form)
+    return sendRequest(`${BASE_URL}/update/${bookId}`, 'PUT', form)
+}

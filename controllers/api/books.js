@@ -5,6 +5,7 @@ module.exports = {
     index,
     bookDelete,
     bookEdit,
+    bookUpdate
 };
 
 async function bookCreate(req, res) {
@@ -46,4 +47,19 @@ async function bookCreate(req, res) {
       console.log(err)
       res.status(400).json(err);
     }
+  }
+
+  async function bookUpdate(req, res) {
+    Book.findById(req.params.id)
+    .then (function(book){
+      book.name=req.body.name
+      book.currentlyReading=req.body.currentlyReading
+      book.currentPage=req.body.currentPage
+      book.note=req.body.note
+      book.save()
+    })
+    .catch (function(err){
+      // console.log(err)
+      res.status(400).json(err)
+    })
   }
