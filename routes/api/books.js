@@ -1,14 +1,12 @@
-// routes/api/users.js
-
 const express = require('express');
 const router = express.Router();
 const booksCtrl = require('../../controllers/api/books');
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // POST /api/books
-router.post('books/new', booksCtrl.create);
-
-// GET /api/users/check-token
-router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+router.post('/new', booksCtrl.bookCreate);
+router.delete('/:id', booksCtrl.bookDelete);
+router.get('/show', booksCtrl.index);
+router.put('/edit/:id', booksCtrl.bookEdit);
+router.put('/update/:id', booksCtrl.bookUpdate);
 
 module.exports = router;
