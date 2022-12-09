@@ -29,6 +29,7 @@ export default function ReadingList() {
       <h1>Reading List</h1>
 
       <table className="reading-list table table-striped">
+        <tbody>
         <tr>
           <th>Title</th>
           <th>Currently Reading?</th>
@@ -37,7 +38,7 @@ export default function ReadingList() {
           <th>Edit</th>
           <th>Delete</th>
         </tr>
-          
+        </tbody>
         {books.map((info) => <SingleBook key={info.name} name={info.name} currentlyReading={info.currentlyReading} currentPage={info.currentPage} _id={info._id} note={info.note} showData={showData} />)}
           
   </table>
