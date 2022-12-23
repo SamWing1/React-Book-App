@@ -8,7 +8,7 @@ export default function AddBookPage({ book, setBook }) {
 
   const navigate = useNavigate()
 
-  const [error, setError] = useState('')
+  const setError = useState('')
 
   const [form, setForm] = useState({
     name: '',
