@@ -21,20 +21,4 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(require('./config/checkToken'));
 
-// const port = process.env.PORT ||  3001;
-
-// Put API routes here, before the "catch all" route
-// app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/books', require('./routes/api/books'));
-
-// The following "catch all" route (note the *) is necessary
-// to return the index.html on all non-AJAX requests
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-// app.listen(port, function() {
-//   console.log(`Express app running on port ${port}`);
-// });
-
 module.exports = app
