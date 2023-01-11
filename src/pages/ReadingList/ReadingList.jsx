@@ -14,7 +14,7 @@ export default function ReadingList() {
   }
 
   function showData() {
-    fetch('http://localhost:3000/api/books/show')
+    fetch('api/books/show')
     .then(res => res.json())
     .then(data => setBooks( data ))
     .catch(err => console.log(err))

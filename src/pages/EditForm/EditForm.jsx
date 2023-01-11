@@ -16,7 +16,7 @@ export default function AddBookPage() {
   const navigate = useNavigate();
 
 const addInfo = async () => {
-    fetch(`http://localhost:3000/api/books/edit/${bookId}`, {method:"PUT"})
+    fetch(`api/books/edit/${bookId}`, {method:"PUT"})
     .then(res => res.json())
     .then(data => setForm( data ))
     .catch(err => console.log(err))

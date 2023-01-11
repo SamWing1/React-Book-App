@@ -4,7 +4,7 @@ import './SingleBook.css'
 export default function SingleBook({ name, currentlyReading, currentPage, _id, note, showData }) {
     
     const deleteButton = async () => {
-        fetch(`http://localhost:3000/api/books/${_id}`, {method:"DELETE"})
+        fetch(`api/books/${_id}`, {method:"DELETE"})
         .then(res => res.json())
         .then(showData())
         .then(showData())
